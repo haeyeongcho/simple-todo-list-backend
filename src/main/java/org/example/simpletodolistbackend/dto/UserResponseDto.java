@@ -10,5 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserResponseDto {
+    private Long userId;
     private String email;
 }
