@@ -7,10 +7,7 @@ import org.example.simpletodolistbackend.entity.User;
 import org.example.simpletodolistbackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
@@ -31,7 +28,7 @@ public class UserController {
     @PostMapping("/signup") // 회원가입 요청 처리
     public ResponseEntity<UserResponseDto> signup(@RequestBody UserSignupDto userSignupDto) {
         User user = userService.register(userSignupDto);
-        UserResponseDto userResponseDto = new UserResponseDto(user.getEmail());
+        UserResponseDto userResponseDto = new UserResponseDto(user.getUserId(), user.getEmail());
         return ResponseEntity.status(201).body(userResponseDto);
     }
 
@@ -44,7 +41,7 @@ public class UserController {
     @PostMapping("/login") // 로그인 요청 처리
     public ResponseEntity<UserResponseDto> login(@RequestBody UserLoginDto userLoginDto) {
         User user = userService.login(userLoginDto);
-        UserResponseDto userResponseDto = new UserResponseDto(user.getEmail());
+        UserResponseDto userResponseDto = new UserResponseDto(user.getUserId(), user.getEmail());
         return ResponseEntity.ok(userResponseDto);
     }
 }
