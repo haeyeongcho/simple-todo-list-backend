@@ -1,4 +1,4 @@
-package org.example.simpletodolistbackend.swagger;
+package org.example.simpletodolistbackend.config.swagger;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
